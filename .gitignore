@@ -1,0 +1,30 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Env / secrets
+.env
+.env.*
+
+# Logs
+*.log
+
+# Vector stores (derived)
+data/vector_store/
+faiss_store/
+
+# Data files (raw docs)
+data/pdf/*.pdf
+data/text_files/*.txt
