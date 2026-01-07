@@ -25,6 +25,3 @@ Thumbs.db
 data/vector_store/
 faiss_store/
 
-# Data files (raw docs)
-data/pdf/*.pdf
-data/text_files/*.txt
