@@ -14,7 +14,6 @@ class RAGSearch:
         faiss_path = os.path.join(persist_dir, "faiss.index")
         meta_path = os.path.join(persist_dir, "metadata.pkl")
         if not (os.path.exists(faiss_path) and os.path.exists(meta_path)):
-            from src.data_loader import load_all_documents
             docs = load_all_documents("data")
             self.vectorstore.build_from_documents(docs)
         else:
@@ -45,12 +44,14 @@ class RAGSearch:
         system = SystemMessage(content="""
         You are a strict question-answering assistant.
 
-        You MUST follow these rules:
-        - Your first word must be part of the answer (no preface like “The provided…”).
-        - Use ONLY the provided reference text.
-        - If the reference does not contain the answer, output EXACTLY:
+        Rules:
+        - Answer using ONLY the provided reference text.
+        - Start directly with the answer (no preface like "The provided...").
+        - Provide a complete answer: at least 4 sentences when possible.
+        - If the answer is a term (e.g., "RAG", "LangChain"), define it and add 1–2 key details from the text.
+        - Include 1 short supporting quote (<= 25 words) ONLY if it exists in the reference text.
+        - If the reference does not contain enough information to answer, output EXACTLY:
         I don't know based on the provided documents.
-        - Do NOT explain what the reference is about.
         - Do NOT mention the words: context, reference, excerpts, documents, query.
         """.strip())
 
@@ -59,7 +60,10 @@ class RAGSearch:
 
         Reference text:
         {reference}
+        
+        Write the answer now.
         """.strip())
+
 
         response = self.llm.invoke([system, user])
         return response.content

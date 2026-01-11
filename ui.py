@@ -39,7 +39,7 @@ def get_search():
 rag = get_search()
 
 query = st.text_input(
-    "Ask a question about your documents:",
+    "Ask a question: ",
     placeholder="e.g., What are the main limitations of Naive RAG?"
 )
 
