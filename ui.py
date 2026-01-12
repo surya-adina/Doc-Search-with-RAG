@@ -31,12 +31,12 @@ Built with **RAG + LLM** on documents:
 
 # ---- App logic ----
 @st.cache_resource
-def get_search():
-    return RAGSearch(persist_dir="faiss_store")
+def _init():
+    with st.spinner("Loading search engine..."):
+        return RAGSearch(persist_dir="faiss_store")
 
+rag = _init()
 
-
-rag = get_search()
 
 query = st.text_input(
     "Ask a question: ",
