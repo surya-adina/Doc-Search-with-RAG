@@ -30,7 +30,7 @@ Built with **RAG + LLM** on documents:
 
 
 # ---- App logic ----
-@st.cache_resource
+@st.cache_resource(show_spinner=False)
 def _init():
     with st.spinner("Loading search engine..."):
         return RAGSearch(persist_dir="faiss_store")
