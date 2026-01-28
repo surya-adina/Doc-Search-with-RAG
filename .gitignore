@@ -23,5 +23,7 @@ Thumbs.db
 
 # Vector stores (derived)
 data/vector_store/
-faiss_store/
-
+# FAISS index (small, for deployment)
+!faiss_store/
+!faiss_store/faiss.index
+!faiss_store/metadata.pkl
