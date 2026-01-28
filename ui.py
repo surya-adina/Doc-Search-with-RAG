@@ -35,7 +35,10 @@ def _init():
     with st.spinner("Loading search engine..."):
         return RAGSearch(persist_dir="faiss_store")
 
-rag = _init()
+if "rag" not in st.session_state:
+    st.session_state.rag = _init()
+
+rag = st.session_state.rag
 
 
 query = st.text_input(
