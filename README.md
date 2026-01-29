@@ -77,7 +77,7 @@ This project simplifies the creation of scalable, high-performance document sear
 
 ## 🚀 Live Demo
 
-👉 Click [here](doc-search-with-rag.streamlit.app) to check it out
+👉 Click [here](http://doc-search-with-rag.streamlit.app/) to check it out
 
 ---
 
